@@ -1,8 +1,13 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.EntityFrameworkCore;
+using moment3EF.Data;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+//lägger till dbcontext
+builder.Services.AddDbContext<RecordContext>(options =>
+options.UseSqlite(builder.Configuration.GetConnectionString("DefaultDbString")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

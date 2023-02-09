@@ -1,0 +1,25 @@
+@model moment3EF.Models.Artist
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="border p-3 mt-5 mb-5">
+    <h1>Information om artist</h1>
+
+    <div>
+        <dl class="m-4">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.ArtistId">Edit</a>
+
+    </div>
+
+</div>
+<a asp-action="Index">Till listan</a>

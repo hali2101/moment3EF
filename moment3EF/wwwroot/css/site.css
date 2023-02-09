@@ -20,3 +20,72 @@ html {
 body {
   margin-bottom: 60px;
 }
+/*CONTAINER*/
+.container {
+    text-align: center;
+}
+
+/*BUTTON*/
+.add_link {
+
+    display:inline-block;
+    border: 1px solid;
+    padding: 0.5em;
+    margin-top: 2em;
+    text-decoration: none;
+    background-color: green;
+    color: white;
+    border-radius: 0.5em;
+}
+    .add_link:hover {
+        background-color: lightgreen;
+        color: black;
+    }
+.table_link_edit {
+    padding: 0.3em;
+    margin-right: 0.7em;
+    text-decoration: none;
+    background-color: blue;
+    border-radius: 0.2em;
+    color: white;
+    font-size: small;
+    float: right;
+}
+.table_link_details {
+    padding: 0.3em;
+    margin-right: 0.7em;
+    text-decoration: none;
+    background-color: purple;
+    border-radius: 0.2em;
+    color: white;
+    font-size: small;
+    float: right;
+}
+.table_link_delete {
+    padding: 0.3em;
+    margin-right: 0.7em;
+    text-decoration: none;
+    background-color: red;
+    border-radius: 0.2em;
+    color: white;
+    font-size: small;
+    float: right;
+}
+
+/*TABLE*/
+.table {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    text-align: left;
+}
+
+/*CREATEROW*/
+.row {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    text-align: left;
+}

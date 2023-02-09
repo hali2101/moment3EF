@@ -1,0 +1,50 @@
+@model IEnumerable<moment3EF.Models.Album>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <h1>Lista över album</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.AlbumName)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YearOfRelease)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Artist.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AlbumName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearOfRelease)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Artist.Name)
+                    </td>
+                    <td>
+                        <a class="table_link_edit" asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a>
+                        <a class="table_link_details" asp-action="Details" asp-route-id="@item.AlbumId">Details</a>
+                        <a class="table_link_delete" asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        <a class="add_link" asp-action="Create">Lägg till nytt album</a>
+    </p>
+</div>

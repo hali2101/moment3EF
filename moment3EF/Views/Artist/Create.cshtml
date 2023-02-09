@@ -1,0 +1,34 @@
+@model moment3EF.Models.Artist
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <h1>Lägga till artist</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group p-3">
+                    <label asp-for="Name" class="control-label mb-3"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group p-3">
+                    <input type="submit" value="Lägg till artist" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Till listan</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
