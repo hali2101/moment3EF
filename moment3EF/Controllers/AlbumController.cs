@@ -24,9 +24,10 @@ namespace moment3EF.Controllers
         // GET: Album
         public async Task<IActionResult> Index(string searchString)
         {
-          
+            //lägger till en koppling till söksträng med ViewData
             ViewData["CurrentFilter"] = searchString;
 
+            //hämtar in data från tabellen albums och inkulderar artister
             var recordContext = _context.Albums.Include(a => a.Artist);
 
             //använder LINQ för att hämta data från _context.albums
@@ -41,6 +42,7 @@ namespace moment3EF.Controllers
                 return View(await albums.ToListAsync());
             }
 
+            //skickar data till vyn
             return View(await recordContext.ToListAsync());
         }
 
