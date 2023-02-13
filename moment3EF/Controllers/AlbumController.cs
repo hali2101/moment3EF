@@ -12,17 +12,34 @@ namespace moment3EF.Controllers
 {
     public class AlbumController : Controller
     {
+        //hämtar in datacontext
         private readonly RecordContext _context;
 
+        //databaskopplingen
         public AlbumController(RecordContext context)
         {
             _context = context;
         }
 
         // GET: Album
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
+          
+            ViewData["CurrentFilter"] = searchString;
+
             var recordContext = _context.Albums.Include(a => a.Artist);
+
+            //använder LINQ för att hämta data från _context.albums
+            var albums = from a in _context.Albums.Include(a => a.Artist)
+                         select a;
+
+            //kontroll ifall efterfrågad sträng är tom eller ej
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                //hämtar de album som matchar med söksträngen oavsett gemener eller versaler
+                albums = albums.Where(a => a.AlbumName!.ToUpper().Contains(searchString.ToUpper()));
+                return View(await albums.ToListAsync());
+            }
 
             return View(await recordContext.ToListAsync());
         }
@@ -67,7 +84,9 @@ namespace moment3EF.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["ArtistId"] = new SelectList(_context.Artists, "ArtistId", "ArtistId", album.ArtistId);
+
             return View(album);
         }
 

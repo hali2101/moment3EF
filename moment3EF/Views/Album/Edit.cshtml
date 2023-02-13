@@ -14,29 +14,29 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AlbumId" />
             <div class="form-group">
-                <label asp-for="AlbumName" class="control-label"></label>
+                <label asp-for="AlbumName" class="control-label mb-2"></label>
                 <input asp-for="AlbumName" class="form-control" />
                 <span asp-validation-for="AlbumName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="YearOfRelease" class="control-label"></label>
+                <label asp-for="YearOfRelease" class="control-label mb-2 mt-3"></label>
                 <input asp-for="YearOfRelease" class="form-control" />
                 <span asp-validation-for="YearOfRelease" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArtistId" class="control-label"></label>
+                <label asp-for="ArtistId" class="control-label mb-2 mt-3"></label>
                 <select asp-for="ArtistId" class="form-control" asp-items="ViewBag.ArtistId"></select>
                 <span asp-validation-for="ArtistId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Spara ändringar" class="btn btn-primary mt-3" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Tillbaka till listan</a>
 </div>
 
 @section Scripts {

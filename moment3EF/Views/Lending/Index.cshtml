@@ -6,52 +6,52 @@
 
 <div>
     <h1>Utlånade album</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Album)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateOfLending)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="resptable">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Album.AlbumName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateOfLending)
-                    </td>
-                    <td>
-                        <a class="table_link_edit" asp-action="Edit" asp-route-id="@item.LendingId">Edit</a> 
-                        <a class="table_link_details" asp-action="Details" asp-route-id="@item.LendingId">Details</a>
-                        <a class="table_link_delete" asp-action="Delete" asp-route-id="@item.LendingId">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Album)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfLending)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Album.AlbumName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfLending)
+                        </td>
+                        <td>
+                            <a class="table_link_edit" asp-action="Edit" asp-route-id="@item.LendingId">Edit</a>
+                            <a class="table_link_details" asp-action="Details" asp-route-id="@item.LendingId">Details</a>
+                            <a class="table_link_delete" asp-action="Delete" asp-route-id="@item.LendingId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <p>
-        <a class="add_link" asp-action="Create">Create New</a>
+        <a class="add_link" asp-action="Create">Låna ett album</a>
     </p>
 </div>

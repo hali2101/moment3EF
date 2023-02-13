@@ -49,7 +49,7 @@ namespace moment3EF.Controllers
         public IActionResult Create()
         {
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
-            
+
             return View();
 
         }
@@ -64,10 +64,27 @@ namespace moment3EF.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Add(lending);
+                // Kontrollera om album finns -> ändra InHouse i tabellen Album till false
+                var album = await _context.Albums.FindAsync(lending.AlbumId);
+
+                //kontroll om listan är tom eller inte och om albumet är utlånat eller inte
+                if (album != null && album.InHouse == true)
+                {
+                    //lägger till utlåning samt uppdaterar InHouse i album-tabellen
+                    _context.Add(lending);
+                    album.InHouse = false;
+                    _context.Update(album);
+                }
+                else
+                {
+                    //felmeddelande ifall albumet redan är utlånat
+                    ViewBag.ErrorMessage = "Tyvärr är albumet redan utlånat!";
+                    ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+                    return View();
+                }
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-
 
             }
 
@@ -161,7 +178,14 @@ namespace moment3EF.Controllers
             {
                 _context.Lendings.Remove(lending);
             }
-            
+            // Kontrollera om album finns -> ändra InHouse i tabellen Album till true
+            var album = await _context.Albums.FindAsync(lending.AlbumId);
+            if (album != null)
+            {
+                album.InHouse = true;
+                _context.Update(album);
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

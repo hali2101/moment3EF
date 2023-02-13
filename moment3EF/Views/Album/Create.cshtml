@@ -13,30 +13,30 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AlbumName" class="control-label"></label>
+                <label asp-for="AlbumName" class="control-label mb-2"></label>
                 <input asp-for="AlbumName" class="form-control" />
                 <span asp-validation-for="AlbumName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="YearOfRelease" class="control-label"></label>
+                <label asp-for="YearOfRelease" class="control-label mb-2 mt-3"></label>
                 <input asp-for="YearOfRelease" class="form-control" />
                 <span asp-validation-for="YearOfRelease" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArtistId" class="control-label"></label>
+                <label asp-for="ArtistId" class="control-label mb-2 mt-3"></label>
                 <select asp-for="ArtistId" class ="form-control" asp-items="ViewBag.ArtistId">
                     <option value="">--Välj här--</option>
                 </select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Lägg till album" class="btn btn-primary mt-3 add_link" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Tillbaka till listan</a>
 </div>
 
 @section Scripts {

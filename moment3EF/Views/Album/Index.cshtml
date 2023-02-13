@@ -5,45 +5,103 @@
 }
 <div class="container">
     <h1>Lista över album</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.AlbumName)</a>
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.YearOfRelease)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Artist.Name)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <br />
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Sök album efter namn: <input type="text" name="SearchString" value="@ViewData["FilterName"]" />
+                <input type="submit" value="Sök" class="mx-3" />
+            </p>
+        </div>
+    </form>
+    <br />
+    <hr />
+    <h2>Alla album</h2>
+    <div class="resptable">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AlbumName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.YearOfRelease)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Artist.Name)
-                    </td>
-                    <td>
-                        <a class="table_link_edit" asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a>
-                        <a class="table_link_details" asp-action="Details" asp-route-id="@item.AlbumId">Details</a>
-                        <a class="table_link_delete" asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AlbumName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YearOfRelease)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Artist)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AlbumName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.YearOfRelease)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Artist.Name)
+                            </td>
+                            <td>
+                                <a class="table_link_edit" asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a>
+                                <a class="table_link_details" asp-action="Details" asp-route-id="@item.AlbumId">Details</a>
+                                <a class="table_link_delete" asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
+                            </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <br />
+    <hr />
+    <h2>Album att låna</h2>
+    <div class="resptable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AlbumName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.YearOfRelease)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Artist)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (item.InHouse == true)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AlbumName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.YearOfRelease)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Artist.Name)
+                            </td>
+                            <td>
+                                <a class="table_link_edit" asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a>
+                                <a class="table_link_details" asp-action="Details" asp-route-id="@item.AlbumId">Details</a>
+                                <a class="table_link_delete" asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
     <p>
         <a class="add_link" asp-action="Create">Lägg till nytt album</a>
     </p>

@@ -43,7 +43,7 @@ body {
     }
 .table_link_edit {
     padding: 0.3em;
-    margin-right: 0.7em;
+    margin: 0.3em;
     text-decoration: none;
     background-color: blue;
     border-radius: 0.2em;
@@ -53,7 +53,7 @@ body {
 }
 .table_link_details {
     padding: 0.3em;
-    margin-right: 0.7em;
+    margin: 0.3em;
     text-decoration: none;
     background-color: purple;
     border-radius: 0.2em;
@@ -63,7 +63,7 @@ body {
 }
 .table_link_delete {
     padding: 0.3em;
-    margin-right: 0.7em;
+    margin: 0.3em;
     text-decoration: none;
     background-color: red;
     border-radius: 0.2em;
@@ -74,11 +74,15 @@ body {
 
 /*TABLE*/
 .table {
-    max-width: 700px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2em;
     text-align: left;
+
+}
+.resptable {
+    overflow-x: auto;
 }
 
 /*CREATEROW*/
