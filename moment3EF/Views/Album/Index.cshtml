@@ -9,7 +9,7 @@
     <form asp-action="Index" method="get">
         <div class="form-actions no-color">
             <p>
-                Sök album efter namn: <input type="text" name="SearchString" value="@ViewData["FilterName"]" />
+                Sök album efter namn: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
                 <input type="submit" value="Sök" class="mx-2" />
                 <a asp-action="Index">Återställ</a>
             </p>
